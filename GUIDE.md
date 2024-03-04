@@ -24,10 +24,6 @@ UI
 -Send message
 -Select product and buying, editing or deleting
 
-<!-- Auth -->
--Github login // check
--acces & refresh token
-
 
 
 <!-- shadCN -->
