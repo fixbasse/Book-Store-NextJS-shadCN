@@ -1,14 +1,17 @@
 import { Button } from '@/components/ui/button'
-import { Bell, Heart, LucideShoppingCart, Search, ShoppingCart, ShoppingCartIcon } from 'lucide-react'
+import { Bell, Heart, Search, ShoppingCartIcon } from 'lucide-react'
 import React from 'react'
-import { DropDownCategories } from '../DropDownCategories'
+import { DropDownCategories } from './DropDownCategories'
+import { FaBell } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 
 const BottomNavbar = () => {
     return (
         <>
             {/* LEFT */}
             <DropDownCategories />
-            
+
             {/* CENTER */}
             <div className="flex items-center w-full">
                 <input
@@ -23,13 +26,13 @@ const BottomNavbar = () => {
 
             {/* RIGHT */}
             <div className="hidden lg:flex items-center gap-8">
-                <div className="flex items-center gap-4">
-                    <Bell />
-                    <Heart />
+                <div className="flex items-center gap-4 text-muted-foreground ml-20">
+                    <FaBell size={25} />
+                    <FaHeart size={25} />
                 </div>
 
                 <div className="flex items-center gap-2">
-                    <ShoppingCartIcon size={30} />
+                    <FaShoppingCart size={25} className='text-muted-foreground' />
                     <div className='font-bold'>
                         $
                         <span>

@@ -1,7 +1,6 @@
-import { User } from 'lucide-react'
 import React from 'react'
-import { DropdownNavbar } from './DropDownNavbar'
-import { ThemeToggle } from '../ThemeToggle'
+import { DropdownNavbar } from '../BottomNavbar/DropDownNavbar'
+import { ThemeToggle } from '../../ThemeToggle'
 
 const UserMenu = () => {
   return (

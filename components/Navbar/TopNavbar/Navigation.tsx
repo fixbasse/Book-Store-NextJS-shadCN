@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-const navData = [
+export const navData = [
     {
         label: 'Book',
         href: '/book'
@@ -21,8 +21,9 @@ const navData = [
         label: 'Blog',
         href: '/blog'
     },
-]
+];
 
+// Middle Navbar
 const Navigation = () => {
     return (
         <div className="hidden lg:flex items-center gap-8 font-bold text-xl">

@@ -1,17 +1,17 @@
 import React from 'react'
-import Logo from '../Logo'
-import Navigation from '../Navigation'
-import UserMenu from '../UserMenu'
-import { Menu } from 'lucide-react'
+import Logo from './Logo'
+import Navigation from './Navigation'
+import UserMenu from './UserMenu'
+import { Sidebar } from '../Sidebar'
 
 const TopNavbar = () => {
     return (
         <>
-            <Menu
-                className='lg:hidden text-primary cursor-pointer'
-                size={30}
-            />
-            
+            {/* Small Screen Navbar */}
+            <div className='lg:hidden'>
+                <Sidebar />
+            </div>
+
             <Logo />
             <Navigation />
             <UserMenu />
