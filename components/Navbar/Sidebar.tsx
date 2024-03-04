@@ -23,7 +23,7 @@ export function Sidebar() {
                         size={30}
                     />
                 </SheetTrigger>
-                <SheetContent side='top' className="mt-[58px] font-bold sm:text-xl w-full h-full lg:hidden flex flex-col gap-8">
+                <SheetContent side='top' className="mt-[72px] font-bold sm:text-xl w-full h-full lg:hidden flex flex-col gap-8">
                     <SidebarCategories />
                     {navData.map((item) => (
                         <Link

@@ -22,7 +22,7 @@ export function SidebarCategories() {
                 </SheetTrigger>
 
                 <SheetContent side='right' className="w-full lg:hidden flex flex-col p-0 gap-0 outline-none focus:ring-0">
-                    <SheetClose className="py-2">
+                    <SheetClose className="py-2 outline-none focus:ring-0">
                         <IoIosArrowBack
                             size={30}
                             className="text-primary"
