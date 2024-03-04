@@ -3,14 +3,14 @@ import TopNavbar from "./TopNavbar/TopNavbar"
 
 const Navbar = () => {
     return (
-        <nav className="flex flex-col gap-4 p-2 md:px-10">
+        <nav className="flex flex-col gap-4 p-4 lg:px-10">
             {/* TOP */}
-            <section className="flex items-center justify-between lg:p-4">
+            <section className="flex items-center justify-between">
                 <TopNavbar />
             </section>
 
             {/* BOTTOM */}
-            <section className="flex items-center gap-4 lg:px-4">
+            <section className="flex items-center gap-4">
                 <BottomNavbar />
             </section>
         </nav>

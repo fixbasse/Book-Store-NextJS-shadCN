@@ -1,5 +1,6 @@
+'use client'
+
 import {
-    ArrowDown,
     Cloud,
     CreditCard,
     Github,
@@ -16,7 +17,6 @@ import {
     Users,
 } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -31,20 +31,32 @@ import {
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { SignInModal } from "@/components/Modal/SignInModal";
+import { useSession } from "next-auth/react";
 import { IoIosArrowDown } from "react-icons/io";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import Typography from "@/components/text/Typography";
 
 
 export function DropdownNavbar() {
+    const user = useCurrentUser();
+
+
     return (
         <DropdownMenu>
+
+            <div className={user && 'hidden'}>
+                <SignInModal />
+            </div>
+
             <DropdownMenuTrigger asChild>
-                <div className="flex items-center gap-4">
+                <span className="flex items-center gap-4">
                     <User />
-                    <button className="font-bold hover:text-primary hidden lg:block">
-                        Fix
-                    </button>
+                    <span className="font-bold hover:text-primary hidden lg:block">
+                        {user?.name}
+                    </span>
                     <IoIosArrowDown className="text-primary hidden lg:block" />
-                </div>
+                </span>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>

@@ -1,12 +1,19 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
-import { Bell, Heart, Search, ShoppingCartIcon } from 'lucide-react'
+import { Search } from 'lucide-react'
 import React from 'react'
 import { DropDownCategories } from './DropDownCategories'
 import { FaBell } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
+import { useCurrentUser } from '@/hooks/use-current-user';
+import { TriggerSignInModal } from '@/components/Modal/TriggerSignInModal'
+import { TriggerSignInModalCart } from '@/components/Modal/TriggerSignInModal-Cart'
 
 const BottomNavbar = () => {
+    const user = useCurrentUser();
+
     return (
         <>
             {/* LEFT */}
@@ -25,20 +32,34 @@ const BottomNavbar = () => {
             </div>
 
             {/* RIGHT */}
-            <div className="hidden lg:flex items-center gap-8">
-                <div className="flex items-center gap-4 text-muted-foreground ml-20">
-                    <FaBell size={25} />
-                    <FaHeart size={25} />
+            <div className="hidden lg:flex items-center gap-8" >
+                <div className="flex items-center gap-4 text-muted-foreground ml-20 cursor-pointer"
+                >
+                    {user ? (
+                        <>
+                            <FaBell size={25} />
+                            <FaHeart size={25} />
+                        </>
+                    ) : (
+                        <TriggerSignInModal />
+                    )}
+
                 </div>
 
-                <div className="flex items-center gap-2">
-                    <FaShoppingCart size={25} className='text-muted-foreground' />
-                    <div className='font-bold'>
-                        $
-                        <span>
-                            0.00
-                        </span>
-                    </div>
+                <div className="flex items-center gap-2 cursor-pointer">
+                    {user ? (
+                        <>
+                            <FaShoppingCart size={25} className='text-muted-foreground' />
+                            <div className='font-bold'>
+                                $
+                                <span>
+                                    0.00
+                                </span>
+                            </div>
+                        </>
+                    ) : (
+                        <TriggerSignInModalCart />
+                    )}
                 </div>
 
             </div>
