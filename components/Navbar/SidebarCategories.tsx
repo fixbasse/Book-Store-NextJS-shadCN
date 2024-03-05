@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/sheet"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs"
-import { categoriesData } from "@/data"
+import { categoriesData, lifestylesData } from "@/data"
 
 export function SidebarCategories() {
     return (
@@ -42,18 +42,22 @@ export function SidebarCategories() {
                         {/* 1st tap */}
                         <TabsContent value="Book" className="flex flex-col gap-4">
                             {categoriesData.map((item) => (
-                                <span key={item.label} className="px-4 py-2 flex gap-4 items-center">
-                                    {item.icon}
+                                <span key={item.label} className="px-4 py-2 flex gap-4 items-center hover:bg-accent">
+                                    <span className="text-primary">
+                                        {item.icon}
+                                    </span>
                                     {item.label}
                                 </span>
                             ))}
                         </TabsContent>
-                        
+
                         {/* 2nd tap */}
                         <TabsContent value="Life Styles" className="flex flex-col m-0 gap-4">
-                            {categoriesData.map((item) => (
-                                <span key={item.label} className="px-4 py-2 flex gap-4 items-center">
-                                    {item.icon}
+                            {lifestylesData.map((item) => (
+                                <span key={item.label} className="px-4 py-2 flex gap-4 items-center hover:bg-accent">
+                                    <span className="text-primary">
+                                        {item.icon}
+                                    </span>
                                     {item.label}
                                 </span>
                             ))}

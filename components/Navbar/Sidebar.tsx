@@ -1,17 +1,15 @@
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
+
 import {
     Sheet,
     SheetClose,
     SheetContent,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import { Menu } from "lucide-react"
-import { navData } from "./TopNavbar/Navigation"
 import Link from "next/link"
 import { IoIosArrowForward } from "react-icons/io"
 import { SidebarCategories } from "./SidebarCategories"
 import { IoMdMenu } from "react-icons/io";
+import { navData } from "@/data";
 
 export function Sidebar() {
     return (

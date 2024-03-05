@@ -1,27 +1,5 @@
+import { navData } from "@/data"
 import Link from "next/link"
-
-export const navData = [
-    {
-        label: 'Book',
-        href: '/book'
-    },
-    {
-        label: 'Course Online',
-        href: '/course'
-    },
-    {
-        label: 'NonBook',
-        href: '/nonbook'
-    },
-    {
-        label: 'Marketplace',
-        href: '/marketplace'
-    },
-    {
-        label: 'Blog',
-        href: '/blog'
-    },
-];
 
 // Middle Navbar
 const Navigation = () => {

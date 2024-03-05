@@ -1,47 +1,27 @@
 'use client'
 
 import {
-    Cloud,
-    CreditCard,
-    Github,
-    Keyboard,
-    LifeBuoy,
-    LogOut,
-    Mail,
-    MessageSquare,
-    Plus,
-    PlusCircle,
-    Settings,
     User,
-    UserPlus,
-    Users,
 } from "lucide-react"
 
 import {
     DropdownMenu,
     DropdownMenuContent,
-    DropdownMenuGroup,
     DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuPortal,
-    DropdownMenuSeparator,
-    DropdownMenuShortcut,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { SignInModal } from "@/components/Modal/SignInModal";
-import { useSession } from "next-auth/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import Typography from "@/components/text/Typography";
+import { RiLogoutBoxRFill } from "react-icons/ri";
+import { userMenuData } from "@/data";
+import { signOut } from "next-auth/react";
+import Link from "next/link";
 
 
 export function DropdownNavbar() {
     const user = useCurrentUser();
-
-
+    
     return (
         <DropdownMenu>
 
@@ -49,94 +29,43 @@ export function DropdownNavbar() {
                 <SignInModal />
             </div>
 
-            <DropdownMenuTrigger asChild>
-                <span className="flex items-center gap-4">
-                    <User />
-                    <span className="font-bold hover:text-primary hidden lg:block">
-                        {user?.name}
+            {user && (
+                // User Icon & Name
+                <DropdownMenuTrigger asChild>
+                    <span className="flex items-center gap-4">
+                        <User />
+                        <span className="font-bold hover:text-primary hidden lg:block">
+                            {user?.name}
+                        </span>
+                        <IoIosArrowDown className="text-primary hidden lg:block" />
                     </span>
-                    <IoIosArrowDown className="text-primary hidden lg:block" />
-                </span>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                        <User className="mr-2 h-4 w-4" />
-                        <span>Profile</span>
-                        <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                </DropdownMenuTrigger>
+            )}
+
+            <DropdownMenuContent className="w-56 p-0 font-bold">
+                {userMenuData.map((item) => (
+                    <Link href={item.href}
+                        key={item.href}
+                        className="px-4 py-2 flex gap-2"
+                    >
+                        <span className="text-xl text-primary">
+                            {item.icon}
+                        </span>
+                        {item.label}
+                    </Link>
+                ))}
+
+                {/* LOGOUT */}
+                {user &&
+                    <DropdownMenuItem
+                        onClick={() => signOut()}
+                        className="px-4 py-2 flex gap-2"
+                    >
+                        <RiLogoutBoxRFill className="text-xl text-primary" />
+                        Logout
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        <CreditCard className="mr-2 h-4 w-4" />
-                        <span>Billing</span>
-                        <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        <Settings className="mr-2 h-4 w-4" />
-                        <span>Settings</span>
-                        <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        <Keyboard className="mr-2 h-4 w-4" />
-                        <span>Keyboard shortcuts</span>
-                        <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                        <Users className="mr-2 h-4 w-4" />
-                        <span>Team</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuSub>
-                        <DropdownMenuSubTrigger>
-                            <UserPlus className="mr-2 h-4 w-4" />
-                            <span>Invite users</span>
-                        </DropdownMenuSubTrigger>
-                        <DropdownMenuPortal>
-                            <DropdownMenuSubContent>
-                                <DropdownMenuItem>
-                                    <Mail className="mr-2 h-4 w-4" />
-                                    <span>Email</span>
-                                </DropdownMenuItem>
-                                <DropdownMenuItem>
-                                    <MessageSquare className="mr-2 h-4 w-4" />
-                                    <span>Message</span>
-                                </DropdownMenuItem>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuItem>
-                                    <PlusCircle className="mr-2 h-4 w-4" />
-                                    <span>More...</span>
-                                </DropdownMenuItem>
-                            </DropdownMenuSubContent>
-                        </DropdownMenuPortal>
-                    </DropdownMenuSub>
-                    <DropdownMenuItem>
-                        <Plus className="mr-2 h-4 w-4" />
-                        <span>New Team</span>
-                        <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                    <Github className="mr-2 h-4 w-4" />
-                    <span>GitHub</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                    <LifeBuoy className="mr-2 h-4 w-4" />
-                    <span>Support</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem disabled>
-                    <Cloud className="mr-2 h-4 w-4" />
-                    <span>API</span>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Log out</span>
-                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-                </DropdownMenuItem>
+                }
+
             </DropdownMenuContent>
         </DropdownMenu>
     )

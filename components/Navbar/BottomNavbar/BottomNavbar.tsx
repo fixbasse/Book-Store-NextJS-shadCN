@@ -7,6 +7,7 @@ import { DropDownCategories } from './DropDownCategories'
 import { FaBell } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
+
 import { useCurrentUser } from '@/hooks/use-current-user';
 import { TriggerSignInModal } from '@/components/Modal/TriggerSignInModal'
 import { TriggerSignInModalCart } from '@/components/Modal/TriggerSignInModal-Cart'
@@ -45,6 +46,10 @@ const BottomNavbar = () => {
                     )}
 
                 </div>
+
+                <span className='text-muted-foreground'>
+                    |
+                </span>
 
                 <div className="flex items-center gap-2 cursor-pointer">
                     {user ? (
