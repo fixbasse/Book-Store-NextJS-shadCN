@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar/Navbar";
 import { SessionProvider } from "next-auth/react";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Nunito({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
             <div className="pt-[166px]">
               {children}
             </div>
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

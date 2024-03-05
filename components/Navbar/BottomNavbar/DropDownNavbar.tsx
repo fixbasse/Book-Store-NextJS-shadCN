@@ -10,13 +10,15 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { SignInModal } from "@/components/Modal/SignInModal";
 import { IoIosArrowDown } from "react-icons/io";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { userMenuData } from "@/data";
+
 import { signOut } from "next-auth/react";
+
 import Link from "next/link";
+import { LayoutModal } from "@/components/Modal/LayoutModal";
 
 
 export function DropdownNavbar() {
@@ -26,7 +28,7 @@ export function DropdownNavbar() {
         <DropdownMenu>
 
             <div className={user && 'hidden'}>
-                <SignInModal />
+                <LayoutModal />
             </div>
 
             {user && (
@@ -59,7 +61,7 @@ export function DropdownNavbar() {
                 {user &&
                     <DropdownMenuItem
                         onClick={() => signOut()}
-                        className="px-4 py-2 flex gap-2"
+                        className="px-4 py-2 flex gap-2 cursor-pointer"
                     >
                         <RiLogoutBoxRFill className="text-xl text-primary" />
                         Logout

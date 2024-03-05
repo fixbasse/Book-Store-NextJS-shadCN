@@ -1,8 +1,5 @@
 'use client'
 
-import { GrGoogle } from "react-icons/gr";
-import { FaGithub } from "react-icons/fa";
-
 import { useState, useTransition } from "react";
 
 import { z } from "zod"
@@ -20,27 +17,24 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "../ui/button";
-import { signInSchema } from "@/schemas/signin-schema";
-import { login } from "@/actions/signin";
+import { registerSchema } from "@/schemas/register-schema";
+import { register } from "@/actions/register";
 import { toast } from "../ui/use-toast";
 
-
-interface SignInModalProps {
+interface RegisterModalProps {
     modalSwitch: boolean;
     setModalSwitch: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
 
-export function SignInModal({
+export function RegisterModal({
     modalSwitch,
     setModalSwitch
-}: SignInModalProps) {
+}: RegisterModalProps) {
     const [isPending, startTransition] = useTransition();
 
-
-
     // 1. Define your form.
-    const form = useForm<z.infer<typeof signInSchema>>({
-        resolver: zodResolver(signInSchema),
+    const form = useForm<z.infer<typeof registerSchema>>({
+        resolver: zodResolver(registerSchema),
         defaultValues: {
             email: "",
             password: "",
@@ -48,33 +42,52 @@ export function SignInModal({
     })
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof signInSchema>) {
-
-        startTransition(() => {
-            login(values)
-                .then(() => {
-                    toast({
-                        title: "Login Success!",
+    function onSubmit(values: z.infer<typeof registerSchema>) {
+        try {
+            startTransition(() => {
+                register(values)
+                    .then(() => {
+                        toast({
+                            title: "Register Success!",
+                        })
                     })
-                })
-        });
-
-
+            });
+        } catch (error) {
+            console.log(error);
+            toast({
+                title: "Something went wrong!",
+            });
+        }
         console.log(values)
     }
 
-
     return (
         <div className={modalSwitch
-            ? 'hidden'
-            : 'block'
+            ? 'block'
+            : 'hidden'
         }>
             <h2 className="font-bold text-xl mb-2">
-                SignIn
+                Register
             </h2>
 
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+                    {/* Name */}
+                    <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Name</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        disabled={isPending}
+                                        placeholder="Thomas...." {...field} className=" placeholder:font-bold italic" />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
                     {/* Email */}
                     <FormField
                         control={form.control}
@@ -109,43 +122,25 @@ export function SignInModal({
                         )}
                     />
                     <Button
+                        disabled={isPending}
                         className="w-full"
                         type="submit"
-                        disabled={isPending}
                     >
-                        SignIn
+                        Register
                     </Button>
                 </form>
             </Form>
 
-            <section className="flex gap-2 mt-2 w-full">
-                <Button
-                    disabled={isPending}
-                    variant='outline'
-                    // onClick={() => handleSignIn('google')}
-                    className="flex items-center justify-center gap-4 w-full">
-                    <GrGoogle />
-                    SignIn with Google
-                </Button>
-                <Button
-                    disabled={isPending}
-                    variant='outline'
-                    // onClick={() => handleSignIn('github')}
-                    className="flex items-center justify-center gap-4 w-full">
-                    <FaGithub />
-                    SignIn with Github
-                </Button>
-            </section>
 
-            <section className="mt-2 text-sm text-center">
+            <section className="text-sm mt-2 text-center">
                 <span>
-                    Don&apos;t have any account?
+                    Already have an account?
                 </span>
                 <button
                     onClick={() => setModalSwitch(!modalSwitch)}
                     className="underline hover:no-underline ml-1 font-bold"
                 >
-                    Register
+                    SignIn
                 </button>
             </section>
         </div>
