@@ -2,6 +2,7 @@ import BottomNavbar from "./BottomNavbar/BottomNavbar"
 import TopNavbar from "./TopNavbar/TopNavbar"
 
 const Navbar = () => {
+    
     return (
         <nav className="flex flex-col gap-4 p-4 lg:px-16 fixed w-full bg-background z-50">
             {/* TOP */}

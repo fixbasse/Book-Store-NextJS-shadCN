@@ -1,16 +1,14 @@
 'use client'
 
 import React from "react";
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
 import {
     Dialog,
     DialogContent,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { GrGoogle } from "react-icons/gr";
-import { FaShoppingCart } from "react-icons/fa";
 
-import { useState } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 import { RegisterModal } from "./RegisterModal";
 import { SignInModal } from './SignInModal';
 

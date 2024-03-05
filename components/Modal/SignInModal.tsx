@@ -1,9 +1,9 @@
 'use client'
 
+import { useTransition } from "react";
+
 import { GrGoogle } from "react-icons/gr";
 import { FaGithub } from "react-icons/fa";
-
-import { useState, useTransition } from "react";
 
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -12,18 +12,20 @@ import { useForm } from "react-hook-form"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
+
 import { Input } from "@/components/ui/input"
 import { Button } from "../ui/button";
-import { signInSchema } from "@/schemas/signin-schema";
-import { login } from "@/actions/signin";
 import { toast } from "../ui/use-toast";
 
+import { login } from "@/actions/signin";
+import { signInSchema } from "@/schemas/signin-schema";
+import { signIn } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 interface SignInModalProps {
     modalSwitch: boolean;
@@ -37,7 +39,6 @@ export function SignInModal({
     const [isPending, startTransition] = useTransition();
 
 
-
     // 1. Define your form.
     const form = useForm<z.infer<typeof signInSchema>>({
         resolver: zodResolver(signInSchema),
@@ -49,6 +50,7 @@ export function SignInModal({
 
     // 2. Define a submit handler.
     function onSubmit(values: z.infer<typeof signInSchema>) {
+        console.log(values);
 
         startTransition(() => {
             login(values)
@@ -57,12 +59,17 @@ export function SignInModal({
                         title: "Login Success!",
                     })
                 })
+
+            form.reset();
+            redirect('/');
         });
+    };
 
-
-        console.log(values)
-    }
-
+    const handleSignIn = (provider: 'google' | 'github') => {
+        signIn(provider, {
+            callbackUrl: '/'
+        })
+    };
 
     return (
         <div className={modalSwitch
@@ -85,7 +92,10 @@ export function SignInModal({
                                 <FormControl>
                                     <Input
                                         disabled={isPending}
-                                        placeholder="fix@gmail.com...." {...field} className=" placeholder:font-bold italic" />
+                                        placeholder="fix@gmail.com...."
+                                        {...field}
+                                        className=" placeholder:font-bold italic"
+                                    />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -122,7 +132,7 @@ export function SignInModal({
                 <Button
                     disabled={isPending}
                     variant='outline'
-                    // onClick={() => handleSignIn('google')}
+                    onClick={() => handleSignIn('google')}
                     className="flex items-center justify-center gap-4 w-full">
                     <GrGoogle />
                     SignIn with Google
@@ -130,7 +140,7 @@ export function SignInModal({
                 <Button
                     disabled={isPending}
                     variant='outline'
-                    // onClick={() => handleSignIn('github')}
+                    onClick={() => handleSignIn('github')}
                     className="flex items-center justify-center gap-4 w-full">
                     <FaGithub />
                     SignIn with Github

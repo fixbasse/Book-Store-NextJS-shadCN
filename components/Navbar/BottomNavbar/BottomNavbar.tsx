@@ -1,12 +1,13 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { Search } from 'lucide-react'
 import React from 'react'
+import { Button } from '@/components/ui/button'
 import { DropDownCategories } from './DropDownCategories'
+
 import { FaBell } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
+import { Search } from 'lucide-react'
 
 import { useCurrentUser } from '@/hooks/use-current-user';
 import { TriggerSignInModal } from '@/components/Modal/TriggerSignInModal'

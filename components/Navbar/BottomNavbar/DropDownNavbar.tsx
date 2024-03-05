@@ -20,7 +20,6 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { LayoutModal } from "@/components/Modal/LayoutModal";
 
-
 export function DropdownNavbar() {
     const user = useCurrentUser();
     

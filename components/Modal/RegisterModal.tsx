@@ -20,6 +20,7 @@ import { Button } from "../ui/button";
 import { registerSchema } from "@/schemas/register-schema";
 import { register } from "@/actions/register";
 import { toast } from "../ui/use-toast";
+import { redirect } from "next/navigation";
 
 interface RegisterModalProps {
     modalSwitch: boolean;
@@ -43,6 +44,8 @@ export function RegisterModal({
 
     // 2. Define a submit handler.
     function onSubmit(values: z.infer<typeof registerSchema>) {
+        console.log(values);
+        
         try {
             startTransition(() => {
                 register(values)
@@ -51,6 +54,8 @@ export function RegisterModal({
                             title: "Register Success!",
                         })
                     })
+                form.reset();
+                redirect('/');
             });
         } catch (error) {
             console.log(error);
@@ -58,7 +63,6 @@ export function RegisterModal({
                 title: "Something went wrong!",
             });
         }
-        console.log(values)
     }
 
     return (
