@@ -25,7 +25,6 @@ export function DropdownNavbar() {
 
     return (
         <DropdownMenu>
-
             <div className={user && 'hidden'}>
                 <LayoutModal />
             </div>

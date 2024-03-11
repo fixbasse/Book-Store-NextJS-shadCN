@@ -92,4 +92,23 @@ export const userMenuData = [
         href: '/account/review',
         icon: <FaStar />
     },
+];
+
+export const addressHeader = [
+    {
+        id: '1',
+        label: 'Name'
+    },
+    {
+        id: '2',
+        label: 'Address'
+    },
+    {
+        id: '3',
+        label: 'Postcode'
+    },
+    {
+        id: '4',
+        label: 'Mobile'
+    },
 ]

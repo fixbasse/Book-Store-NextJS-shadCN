@@ -1,6 +1,6 @@
 import Typography from '@/components/text/Typography'
 import React from 'react'
-import { AccountAddressModal } from '../AccountAddressModal'
+import { AccountAddressModal } from '../../_components/AccountAddressModal'
 import { User } from '@prisma/client'
 import Link from 'next/link';
 interface AccountHeroContentProps {

@@ -15,8 +15,6 @@ const AccoutHeroSidebar = ({
     user
 }: AccountHeroSidebarProps) => {
     console.log(user?.email);
-    
-
 
     return (
         <>
