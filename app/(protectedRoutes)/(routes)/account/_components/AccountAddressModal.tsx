@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { accountSchema } from "@/schemas/account-schema";
+import { redirect } from "next/navigation";
 
 export function AccountAddressModal() {
     const [isLoading, setIsLoading] = useState(false);
@@ -31,24 +32,29 @@ export function AccountAddressModal() {
         defaultValues: {
             firstname: "",
             lastname: "",
-            mobile: 0,
+            mobile: "",
             address: "",
             district: "",
-            postcode: 0,
+            postcode: "",
         },
     })
 
     // 2. Define a submit handler.
     async function onSubmit(values: z.infer<typeof accountSchema>) {
         console.log(values);
+        setIsLoading(true);
 
         try {
-            const res = await axios.post('/api/account', values);
+            const res = await axios.post('/api/user', values);
             console.log(res.data);
 
+            form.reset();
+            redirect('/account');
         } catch (error) {
             console.log(error);
 
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -57,7 +63,7 @@ export function AccountAddressModal() {
         <Dialog>
             <DialogTrigger asChild>
                 <Button className="font-semibold">
-                    Add Adress
+                    Update / Add
                 </Button>
             </DialogTrigger>
 
@@ -191,7 +197,7 @@ export function AccountAddressModal() {
                             type="submit"
                             disabled={isLoading}
                         >
-                            Add Address
+                            Update Address
                         </Button>
                     </form>
                 </Form>

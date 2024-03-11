@@ -7,7 +7,7 @@ export const accountSchema = z.object({
     lastname: z.string().min(2, {
         message: "Surname must be at least 2 characters.",
     }),
-    mobile: z.number().min(2, {
+    mobile: z.string().min(2, {
         message: "Mobile number must be at least 2 characters.",
     }),
     address: z.string().min(2, {
@@ -16,7 +16,7 @@ export const accountSchema = z.object({
     district: z.string().min(2, {
         message: "District must be at least 2 characters.",
     }),
-    postcode: z.number().min(2, {
+    postcode: z.string().min(2, {
         message: "Postcode number must be at least 2 characters.",
     }),
 })

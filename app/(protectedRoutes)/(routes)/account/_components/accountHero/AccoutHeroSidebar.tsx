@@ -14,9 +14,6 @@ interface AccountHeroSidebarProps {
 const AccoutHeroSidebar = ({
     user
 }: AccountHeroSidebarProps) => {
-    // const user = useCurrentUser();
-    // const user = await getCurrentUser();
-    // console.log(user?.email);
     console.log(user?.email);
     
 
@@ -31,7 +28,7 @@ const AccoutHeroSidebar = ({
                         {user?.name}
                     </h2>
                     <Link
-                        href='/account'
+                        href='/account/dashboard'
                         className="text-muted-foreground">
                         Edit profile
                     </Link>

@@ -74,7 +74,7 @@ export const lifestylesData = [
 export const userMenuData = [
     {
         label: 'Manage Account',
-        href: '/account',
+        href: '/account/dashboard',
         icon: <RiAccountBoxFill />
     },
     {

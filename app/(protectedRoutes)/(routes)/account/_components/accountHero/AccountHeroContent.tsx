@@ -2,19 +2,20 @@ import Typography from '@/components/text/Typography'
 import React from 'react'
 import { AccountAddressModal } from '../AccountAddressModal'
 import { User } from '@prisma/client'
+import Link from 'next/link';
 interface AccountHeroContentProps {
     user: User | undefined | null;
 }
 
 const AccountHeroContent = ({
-    user
+    user,
 }: AccountHeroContentProps) => {
-    console.log(user?.email);
-    
+    console.log(user?.address);
+
     return (
         <>
 
-            <section className='flex flex-col gap-4 px-4'>
+            <section className='flex flex-col gap-4'>
                 <Typography className='text-xl font-bold'>
                     Manage My account
                 </Typography>
@@ -48,10 +49,32 @@ const AccountHeroContent = ({
                             <h2 className='font-semibold'>
                                 My Address
                             </h2>
-                            <button className='text-primary'>
+                            <Link href='/account/address' className='text-primary'>
                                 Edit
-                            </button>
+                            </Link>
                         </div>
+
+                        {/* Default Address */}
+                        <article>
+                            <h3 className='font-medium'>
+                                Default Address
+                            </h3>
+
+                            <div className='py-2'>
+                                <div className='flex gap-2'>
+                                    <span>{user?.firstname}</span>
+                                    <span>{user?.lastname}</span>
+                                    <span>{user?.mobile}</span>
+                                </div>
+                                <div>
+                                    {user?.address}
+                                    {user?.district}
+                                </div>
+                                <div>
+                                    {user?.postcode}
+                                </div>
+                            </div>
+                        </article>
 
                         <AccountAddressModal />
                     </div>

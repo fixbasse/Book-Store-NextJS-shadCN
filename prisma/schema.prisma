@@ -21,11 +21,19 @@ model User {
   image         String?
   role          UserRole  @default(USER)
 
+  firstname String?
+  lastname  String?
+  mobile    String?
+  address   String?
+  district  String?
+  postcode  String?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   Account Account[]
   Session Session[]
+  // Address Address[]
   Address Address[]
 }
 
@@ -60,10 +68,10 @@ model Address {
   id        String @id @default(cuid())
   firstname String
   lastname  String
-  mobile    Int
+  mobile    String
   address   String
   district  String
-  postcode  Int
+  postcode  String
 
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
