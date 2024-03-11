@@ -24,12 +24,12 @@ import { redirect } from "next/navigation";
 
 interface RegisterModalProps {
     modalSwitch: boolean;
-    setModalSwitch: React.Dispatch<React.SetStateAction<boolean>>;
+    handleClose: () => void;
 };
 
 export function RegisterModal({
     modalSwitch,
-    setModalSwitch
+    handleClose
 }: RegisterModalProps) {
     const [isPending, startTransition] = useTransition();
 
@@ -45,7 +45,7 @@ export function RegisterModal({
     // 2. Define a submit handler.
     function onSubmit(values: z.infer<typeof registerSchema>) {
         console.log(values);
-        
+
         try {
             startTransition(() => {
                 register(values)
@@ -141,7 +141,7 @@ export function RegisterModal({
                     Already have an account?
                 </span>
                 <button
-                    onClick={() => setModalSwitch(!modalSwitch)}
+                    onClick={handleClose}
                     className="underline hover:no-underline ml-1 font-bold"
                 >
                     SignIn

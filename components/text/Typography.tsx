@@ -1,7 +1,7 @@
 import React from "react";
 
 type TypographyProps = {
-    className: string;
+    className?: string;
     children: React.ReactNode
 }
 

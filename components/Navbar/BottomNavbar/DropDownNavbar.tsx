@@ -22,7 +22,7 @@ import { LayoutModal } from "@/components/Modal/LayoutModal";
 
 export function DropdownNavbar() {
     const user = useCurrentUser();
-    
+
     return (
         <DropdownMenu>
 
@@ -43,7 +43,7 @@ export function DropdownNavbar() {
                 </DropdownMenuTrigger>
             )}
 
-            <DropdownMenuContent className="w-56 p-0 font-bold">
+            <DropdownMenuContent className="w-56 p-0 font-medium">
                 {userMenuData.map((item) => (
                     <Link href={item.href}
                         key={item.href}
@@ -63,7 +63,9 @@ export function DropdownNavbar() {
                         className="px-4 py-2 flex gap-2 cursor-pointer"
                     >
                         <RiLogoutBoxRFill className="text-xl text-primary" />
-                        Logout
+                        <span className="text-[16px]">
+                            Logout
+                        </span>
                     </DropdownMenuItem>
                 }
 

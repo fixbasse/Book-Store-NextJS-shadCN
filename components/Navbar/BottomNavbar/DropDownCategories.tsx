@@ -33,7 +33,7 @@ export function DropDownCategories() {
                     </TabsList>
 
                     {/* 1st tap */}
-                    <TabsContent value="Book" className="flex flex-col font-bold">
+                    <TabsContent value="Book" className="flex flex-col font-medium">
                         {categoriesData.map((item) => (
                             <div key={item.label} className="px-4 py-2 flex items-center gap-2 hover:bg-accent">
                                 <span className="text-primary">
@@ -47,7 +47,7 @@ export function DropDownCategories() {
                     {/* 2nd tap */}
                     <TabsContent value="Life Styles">
                         {/* 2nd tap */}
-                        <TabsContent value="Life Styles" className="flex flex-col font-bold">
+                        <TabsContent value="Life Styles" className="flex flex-col font-medium">
                             {lifestylesData.map((item) => (
                                 <div key={item.label} className="px-4 py-2 flex items-center gap-2 hover:bg-accent">
                                     <span className="text-primary">

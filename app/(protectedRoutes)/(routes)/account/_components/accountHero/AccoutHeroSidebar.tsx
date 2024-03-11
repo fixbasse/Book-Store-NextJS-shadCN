@@ -1,14 +1,25 @@
-'use client'
+// 'use client'
 
 import Typography from "@/components/text/Typography";
 import { Separator } from "@/components/ui/separator";
-import { useCurrentUser } from "@/hooks/use-current-user"
 import Link from "next/link";
 import { FaCircleUser } from "react-icons/fa6";
 import { userMenuData } from "@/data";
+import { User } from "@prisma/client";
 
-const AccoutHeroSidebar = () => {
-    const user = useCurrentUser();
+interface AccountHeroSidebarProps {
+    user: User | undefined | null;
+}
+
+const AccoutHeroSidebar = ({
+    user
+}: AccountHeroSidebarProps) => {
+    // const user = useCurrentUser();
+    // const user = await getCurrentUser();
+    // console.log(user?.email);
+    console.log(user?.email);
+    
+
 
     return (
         <>
@@ -38,7 +49,7 @@ const AccoutHeroSidebar = () => {
                         <span className="text-2xl text-primary">
                             {item.icon}
                         </span>
-                        <h2 className="font-bold hover:text-primary">
+                        <h2 className="font-medium hover:text-primary">
                             {item.label}
                         </h2>
                     </Link>

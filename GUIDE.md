@@ -29,3 +29,6 @@ UI
 <!-- shadCN -->
 -DropdownContent p-0
 -DropDownItem px-4 py-2
+
+
+https://authjs.dev/guides/upgrade-to-v5

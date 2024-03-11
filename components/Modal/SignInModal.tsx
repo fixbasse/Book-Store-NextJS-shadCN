@@ -29,12 +29,12 @@ import { redirect } from "next/navigation";
 
 interface SignInModalProps {
     modalSwitch: boolean;
-    setModalSwitch: React.Dispatch<React.SetStateAction<boolean>>;
+    handleClose: () => void;
 }
 
 export function SignInModal({
     modalSwitch,
-    setModalSwitch
+    handleClose
 }: SignInModalProps) {
     const [isPending, startTransition] = useTransition();
 
@@ -49,8 +49,9 @@ export function SignInModal({
     })
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof signInSchema>) {
+    async function onSubmit(values: z.infer<typeof signInSchema>) {
         console.log(values);
+
 
         startTransition(() => {
             login(values)
@@ -63,6 +64,8 @@ export function SignInModal({
             form.reset();
             redirect('/');
         });
+
+
     };
 
     const handleSignIn = (provider: 'google' | 'github') => {
@@ -152,7 +155,7 @@ export function SignInModal({
                     Don&apos;t have any account?
                 </span>
                 <button
-                    onClick={() => setModalSwitch(!modalSwitch)}
+                    onClick={handleClose}
                     className="underline hover:no-underline ml-1 font-bold"
                 >
                     Register

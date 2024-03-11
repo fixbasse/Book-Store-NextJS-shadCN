@@ -11,7 +11,7 @@ const TopNavbar = () => {
             <div className='lg:hidden'>
                 <Sidebar />
             </div>
-
+            
             <Logo />
             <Navigation />
             <UserMenu />

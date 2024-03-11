@@ -15,6 +15,7 @@ export const login = async (values: z.infer<typeof signInSchema>) => {
 
     const { email, password } = validatedFields.data;
 
+
     try {
         await signIn('credentials', {
             email,
@@ -25,4 +26,6 @@ export const login = async (values: z.infer<typeof signInSchema>) => {
         console.log(error);
 
     }
+
+    return { success: "Confirmation email sent!" };
 }

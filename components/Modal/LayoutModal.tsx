@@ -1,6 +1,6 @@
 'use client'
 
-import React from "react";
+import React, { useCallback } from "react";
 
 import {
     Dialog,
@@ -14,6 +14,10 @@ import { SignInModal } from './SignInModal';
 export function LayoutModal() {
     const [modalSwitch, setModalSwitch] = useState(false);
 
+    const handleClose = useCallback(() => {
+        setModalSwitch(!modalSwitch);
+    }, [modalSwitch]);
+
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -22,20 +26,16 @@ export function LayoutModal() {
                 </button>
             </DialogTrigger>
 
-            <DialogContent>
-
+            <DialogContent className="lg:w-[800px]">
                 <SignInModal
                     modalSwitch={modalSwitch}
-                    setModalSwitch={setModalSwitch}
+                    handleClose={handleClose}
                 />
                 <RegisterModal
                     modalSwitch={modalSwitch}
-                    setModalSwitch={setModalSwitch}
+                    handleClose={handleClose}
                 />
-
             </DialogContent>
-
-
         </Dialog>
     )
 }
