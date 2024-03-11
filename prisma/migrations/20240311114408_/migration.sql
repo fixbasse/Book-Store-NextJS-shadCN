@@ -10,6 +10,12 @@ CREATE TABLE "User" (
     "emailVerified" TIMESTAMP(3),
     "image" TEXT,
     "role" "UserRole" NOT NULL DEFAULT 'USER',
+    "firstname" TEXT,
+    "lastname" TEXT,
+    "mobile" TEXT,
+    "address" TEXT,
+    "district" TEXT,
+    "postcode" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -49,10 +55,10 @@ CREATE TABLE "Address" (
     "id" TEXT NOT NULL,
     "firstname" TEXT NOT NULL,
     "lastname" TEXT NOT NULL,
-    "mobile" INTEGER NOT NULL,
+    "mobile" TEXT NOT NULL,
     "address" TEXT NOT NULL,
     "district" TEXT NOT NULL,
-    "postcode" INTEGER NOT NULL,
+    "postcode" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
 
     CONSTRAINT "Address_pkey" PRIMARY KEY ("id")
