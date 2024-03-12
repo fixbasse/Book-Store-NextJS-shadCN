@@ -11,7 +11,7 @@ const SingleAddress = ({
     address
 }: SingleAddressProps) => {
     return (
-        <div className='rounded-md'>
+        <div>
 
             {/* Show Address */}
             <section className='grid grid-cols-5 p-4'>

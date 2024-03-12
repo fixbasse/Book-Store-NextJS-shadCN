@@ -106,7 +106,7 @@ export function CreateNewAddressModal() {
                                             <Input
                                                 type="text"
                                                 disabled={isLoading}
-                                                placeholder=""
+                                                placeholder="Shelby"
                                                 {...field}
                                                 className="w-full"
                                             />
@@ -165,7 +165,7 @@ export function CreateNewAddressModal() {
                                             <Input
                                                 type="text"
                                                 disabled={isLoading}
-                                                placeholder=""
+                                                placeholder="10170"
                                                 {...field}
                                                 className="w-full"
                                             />
@@ -186,7 +186,7 @@ export function CreateNewAddressModal() {
                                             <Input
                                                 type="text"
                                                 disabled={isLoading}
-                                                placeholder="081-909" {...field} className="" />
+                                                placeholder="081-909-1243" {...field} className="" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

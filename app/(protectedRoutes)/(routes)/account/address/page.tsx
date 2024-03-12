@@ -4,11 +4,17 @@ import SingleAddress from './_components/SingleAddress'
 import Typography from '@/components/text/Typography'
 import prismaDb from '@/lib/prismadb'
 import { addressHeader } from '@/data'
+import getCurrentUser from '@/hooks/getCurrentUser'
 
 //* PAGE 
 const AddressPage = async () => {
-  const address = await prismaDb.address.findMany();
-  console.log(address);
+  const user = await getCurrentUser();
+  const address = await prismaDb.address.findMany({
+    where: {
+      userId: user?.id
+    }
+  });
+
 
   return (
     <div className='flex flex-col justify-between h-full'>
@@ -21,24 +27,26 @@ const AddressPage = async () => {
         Address
       </Typography>
 
-      {/* HEAD */}
-      <div className='border rounded-md my-4'>
+      {/* HEADER */}
+      <div className='rounded-lg my-4'>
         <section className='grid grid-cols-5 bg-primary-foreground dark:bg-muted p-4 rounded-t-md'>
           {addressHeader.map((item) => (
-            <Typography key={item.id} className='font-semibold'>
+            <Typography key={item.id} className='font-bold'>
               {item.label}
             </Typography>
           ))}
         </section>
 
+        {/* Content */}
         {address.map((item) => (
           <SingleAddress
             address={item}
-            key={item.id} />
+            key={item.id}
+          />
         ))}
       </div>
 
-      {/* BUTTON */}
+      {/* Add Address BTN */}
       <div className='ml-auto'>
         <CreateNewAddressModal />
       </div>

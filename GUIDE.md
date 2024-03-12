@@ -7,6 +7,7 @@ Book-Store
 
 UI
 -loading screen
+-refresh modal when submit
 
 <! **-- STEPS --**>
 -Navbar 
@@ -19,11 +20,10 @@ UI
 
 
 <!*-- User -->
--Create account and login
+-Create account and login //
 -Edit & Delete the profile data
--Send message
+-Send message 
 -Select product and buying, editing or deleting
-
 
 
 <!-- shadCN -->

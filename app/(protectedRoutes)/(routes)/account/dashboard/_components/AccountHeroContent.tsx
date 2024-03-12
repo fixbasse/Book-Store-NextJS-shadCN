@@ -3,14 +3,19 @@ import React from 'react'
 import { AccountAddressModal } from '../../_components/AccountAddressModal'
 import { User } from '@prisma/client'
 import Link from 'next/link';
+import getAddress from '@/hooks/get-address';
 interface AccountHeroContentProps {
     user: User | undefined | null;
 }
 
-const AccountHeroContent = ({
+const AccountHeroContent = async ({
     user,
 }: AccountHeroContentProps) => {
     console.log(user?.address);
+    const address = await getAddress();
+
+    console.log(address);
+
 
     return (
         <>
@@ -24,11 +29,11 @@ const AccountHeroContent = ({
                 <div className='flex flex-col lg:flex-row justify-between gap-8'>
 
                     <div className='border p-4 rounded-md w-full'>
-                        <div className='flex items-center gap-2 pb-4'>
-                            <h2 className='font-semibold'>
+                        <div className='flex items-center justify-between pb-4'>
+                            <Typography className='font-bold'>
                                 My Profile
-                            </h2>
-                            <button className='text-primary'>
+                            </Typography>
+                            <button className='text-primary font-semibold'>
                                 Edit
                             </button>
                         </div>
@@ -45,38 +50,40 @@ const AccountHeroContent = ({
 
                     {/* Address */}
                     <div className='border p-4 rounded-md w-full flex flex-col justify-between'>
-                        <div className='flex items-center gap-2 pb-4'>
-                            <h2 className='font-semibold'>
+                        <div className='flex items-center justify-between pb-4'>
+                            <Typography className='font-bold'>
                                 My Address
-                            </h2>
-                            <Link href='/account/address' className='text-primary'>
+                            </Typography>
+                            <Link href='/account/address' className='text-primary font-semibold'>
                                 Edit
                             </Link>
                         </div>
 
                         {/* Default Address */}
                         <article>
-                            <h3 className='font-medium'>
+                            <h3 className='font-bold'>
                                 Default Address
                             </h3>
 
                             <div className='py-2'>
-                                <div className='flex gap-2'>
-                                    <span>{user?.firstname}</span>
-                                    <span>{user?.lastname}</span>
-                                    <span>{user?.mobile}</span>
+                                <div className='flex gap-1'>
+                                    <span>{address?.firstname}</span>
+                                    <span>{address?.lastname}</span>
+                                    <span>{address?.mobile}</span>
+                                </div>
+                                <div className='flex gap-1'>
+                                    {address?.address}
+                                    <span>
+                                        {address?.district}
+                                    </span>
                                 </div>
                                 <div>
-                                    {user?.address}
-                                    {user?.district}
-                                </div>
-                                <div>
-                                    {user?.postcode}
+                                    {address?.postcode}
                                 </div>
                             </div>
                         </article>
 
-                        <AccountAddressModal />
+                        {/* <AccountAddressModal /> */}
                     </div>
                 </div>
             </section>

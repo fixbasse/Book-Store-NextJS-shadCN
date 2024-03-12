@@ -6,7 +6,7 @@ interface EditAddressPageProps {
     params: {
         id: string
     }
-}
+};
 
 //* PAGE 
 const EditAddressPage = async ({ params }: EditAddressPageProps) => {
@@ -17,6 +17,9 @@ const EditAddressPage = async ({ params }: EditAddressPageProps) => {
 
     return (
         <div>
+            <title>
+                User | Edit Address
+            </title>
 
             <EditAddressModal address={address} />
 
