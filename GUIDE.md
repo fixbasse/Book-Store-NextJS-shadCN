@@ -5,6 +5,10 @@ Book-Store
 4. Chat App
 5. Language Switcher
 
+** NOW
+-Updated Address
+-Choose specific address
+
 UI
 -loading screen
 -refresh modal when submit

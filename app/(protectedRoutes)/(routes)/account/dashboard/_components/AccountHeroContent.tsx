@@ -12,7 +12,7 @@ const AccountHeroContent = async ({
     user,
 }: AccountHeroContentProps) => {
     console.log(user?.address);
-    const address = await getAddress();
+    const address = await getAddress(); // this show only the first not the selected
 
     console.log(address);
 

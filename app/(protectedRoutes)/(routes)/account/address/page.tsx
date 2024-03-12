@@ -37,7 +37,7 @@ const AddressPage = async () => {
           ))}
         </section>
 
-        {/* Content */}
+        {/* Single Address Content */}
         {address.map((item) => (
           <SingleAddress
             address={item}

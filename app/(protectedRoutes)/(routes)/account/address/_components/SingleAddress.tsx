@@ -10,6 +10,9 @@ interface SingleAddressProps {
 const SingleAddress = ({
     address
 }: SingleAddressProps) => {
+
+    console.log(address);
+    
     return (
         <div>
 
