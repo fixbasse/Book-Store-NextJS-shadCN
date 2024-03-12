@@ -38,3 +38,19 @@ export async function POST(req: Request) {
         return NextResponse.json('Internal Error at Account');
     }
 };
+
+export async function GET() {
+    const user = await getCurrentUser();
+
+    try {
+        const address = await prismaDb.address.findMany({
+            where: {
+                userId: user?.id
+            }
+        });
+
+        return NextResponse.json(address);
+    } catch (error) {
+
+    }
+};
