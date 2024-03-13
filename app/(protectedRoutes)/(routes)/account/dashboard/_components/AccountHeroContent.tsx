@@ -1,20 +1,22 @@
+'use client'
+
 import Typography from '@/components/text/Typography'
 import React from 'react'
 import { AccountAddressModal } from '../../_components/AccountAddressModal'
 import { User } from '@prisma/client'
 import Link from 'next/link';
 import getAddress from '@/hooks/get-address';
+import { useSelectAddressStore } from '@/hooks/use-address-id'
 interface AccountHeroContentProps {
     user: User | undefined | null;
-}
+};
 
-const AccountHeroContent = async ({
+const AccountHeroContent = ({
     user,
 }: AccountHeroContentProps) => {
-    console.log(user?.address);
-    const address = await getAddress(); // this show only the first not the selected
+    const { addressId } = useSelectAddressStore();
 
-    console.log(address);
+    console.log(addressId);
 
 
     return (
@@ -66,7 +68,8 @@ const AccountHeroContent = async ({
                             </h3>
 
                             <div className='py-2'>
-                                <div className='flex gap-1'>
+                                <span></span>
+                                {/* <div className='flex gap-1'>
                                     <span>{address?.firstname}</span>
                                     <span>{address?.lastname}</span>
                                     <span>{address?.mobile}</span>
@@ -79,7 +82,7 @@ const AccountHeroContent = async ({
                                 </div>
                                 <div>
                                     {address?.postcode}
-                                </div>
+                                </div> */}
                             </div>
                         </article>
 

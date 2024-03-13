@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button';
+import { useSelectAddressStore } from '@/hooks/use-address-id';
 import { Address } from '@prisma/client'
 import Link from 'next/link';
 import React from 'react'
@@ -11,21 +12,17 @@ interface SingleAddressProps {
     address: Address;
 };
 
-type Inputs = {
-    id: string
-}
+// export type Inputs = {
+//     addressId: string | Address;
+// };
 
 const SingleAddress = ({
     address
 }: SingleAddressProps) => {
-    const { register, handleSubmit } = useForm<Inputs>();
+    const { addressId, setAddressId } = useSelectAddressStore();
 
-    // console.log(address);
 
-    const onSubmit: SubmitHandler<Inputs> = (values) => {
-        console.log(values);
-
-    };
+    console.log(addressId);
 
 
     return (
@@ -61,16 +58,19 @@ const SingleAddress = ({
                     </Button>
 
                     {/* Select */}
-                    <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
+                    <form className='flex flex-col'>
                         <input
                             type="radio"
-                            value={address.id}
-                            {...register('id')}
+                            value={address.address}
+                            onChange={(e) => setAddressId(e.currentTarget.value)}
+                            // {...register('addressId')}
                         />
                         <button type='submit'>
                             Save
                         </button>
                     </form>
+
+                    {addressId}
 
 
                 </div>

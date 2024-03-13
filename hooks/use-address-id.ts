@@ -2,10 +2,13 @@ import { create } from 'zustand'
 
 type State = {
     addressId: string;
-    setAddressId: (addressId: string) => void;
 };
 
-export const useSelectAddressStore = create<State>((set) => ({
+type Action = {
+    setAddressId: (addressId: State['addressId']) => void;
+}
+
+export const useSelectAddressStore = create<State & Action>((set) => ({
     addressId: '',
     setAddressId: (addressId) => set(() => ({ addressId: addressId }))
 }));
