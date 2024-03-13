@@ -57,22 +57,6 @@ const SingleAddress = ({
                         </Link>
                     </Button>
 
-                    {/* Select */}
-                    <form className='flex flex-col'>
-                        <input
-                            type="radio"
-                            value={address.address}
-                            onChange={(e) => setAddressId(e.currentTarget.value)}
-                            // {...register('addressId')}
-                        />
-                        <button type='submit'>
-                            Save
-                        </button>
-                    </form>
-
-                    {addressId}
-
-
                 </div>
             </section>
 

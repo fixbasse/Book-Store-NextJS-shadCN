@@ -26,7 +26,7 @@ export function LayoutModal() {
                 </button>
             </DialogTrigger>
 
-            <DialogContent className="lg:w-[800px]">
+            <DialogContent className="lg:w-[500px]">
                 <SignInModal
                     modalSwitch={modalSwitch}
                     handleClose={handleClose}

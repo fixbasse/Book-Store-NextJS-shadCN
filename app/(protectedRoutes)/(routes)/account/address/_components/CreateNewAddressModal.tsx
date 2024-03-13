@@ -65,7 +65,7 @@ export function CreateNewAddressModal() {
         <Dialog>
             <DialogTrigger asChild>
                 <Button className="font-semibold flex items-center gap-2">
-                 <PlusCircle /> Add Address
+                 <PlusCircle /> Add
                 </Button>
             </DialogTrigger>
 

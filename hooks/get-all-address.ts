@@ -14,6 +14,8 @@ export async function getAllAddress() {
             }
         });
 
+        if (!address) return null;
+
         return address;
     } catch (error) {
         console.log('Internal Error at getAllAddress!');

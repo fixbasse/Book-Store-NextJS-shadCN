@@ -2,10 +2,8 @@
 
 import Typography from '@/components/text/Typography'
 import React from 'react'
-import { AccountAddressModal } from '../../_components/AccountAddressModal'
 import { User } from '@prisma/client'
 import Link from 'next/link';
-import getAddress from '@/hooks/get-address';
 import { useSelectAddressStore } from '@/hooks/use-address-id'
 interface AccountHeroContentProps {
     user: User | undefined | null;
