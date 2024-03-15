@@ -9,15 +9,16 @@ export async function POST(req: Request) {
         return NextResponse.json('No User');
     };
 
+    const {
+        firstname,
+        lastname,
+        mobile,
+        address,
+        district,
+        postcode,
+    } = await req.json();
+
     try {
-        const {
-            firstname,
-            lastname,
-            mobile,
-            address,
-            district,
-            postcode,
-        } = await req.json();
 
         const newAddress = await prismaDb.address.create({
             data: {
@@ -31,6 +32,8 @@ export async function POST(req: Request) {
             }
         });
 
+        // if (!newAddress) return null;
+
         return NextResponse.json(newAddress);
     } catch (error) {
         return NextResponse.json('Internal Error at [AddAddress]');
@@ -40,17 +43,17 @@ export async function POST(req: Request) {
 //* Don't forget to send ID from client
 export async function PUT(req: Request) {
 
-    const {
-        id,
-        firstname,
-        lastname,
-        mobile,
-        address,
-        district,
-        postcode
-    } = await req.json();
-
     try {
+        const {
+            id,
+            firstname,
+            lastname,
+            mobile,
+            address,
+            district,
+            postcode
+        } = await req.json();
+
         const updatedAddress = await prismaDb.address.update({
             where: {
                 id: id
@@ -65,7 +68,7 @@ export async function PUT(req: Request) {
             }
         });
 
-        if (!updatedAddress) return null;
+        // if (!updatedAddress) return null;
 
         return NextResponse.json(updatedAddress);
     } catch (error: any) {
