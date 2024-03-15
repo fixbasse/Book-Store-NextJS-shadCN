@@ -1,7 +1,5 @@
 import getCurrentUser from "@/hooks/getCurrentUser";
-import { useCurrentUser } from "@/hooks/use-current-user";
 import prismaDb from "@/lib/prismadb";
-import { getSession } from "next-auth/react";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -35,22 +33,42 @@ export async function POST(req: Request) {
 
         return NextResponse.json(newAddress);
     } catch (error) {
-        return NextResponse.json('Internal Error at Account');
+        return NextResponse.json('Internal Error at [AddAddress]');
     }
 };
 
-export async function GET() {
-    const user = await getCurrentUser();
+//* Don't forget to send ID from client
+export async function PUT(req: Request) {
+
+    const {
+        id,
+        firstname,
+        lastname,
+        mobile,
+        address,
+        district,
+        postcode
+    } = await req.json();
 
     try {
-        const address = await prismaDb.address.findMany({
+        const updatedAddress = await prismaDb.address.update({
             where: {
-                userId: user?.id
+                id: id
+            },
+            data: {
+                firstname,
+                lastname,
+                mobile,
+                address,
+                district,
+                postcode
             }
         });
 
-        return NextResponse.json(address);
-    } catch (error) {
+        if (!updatedAddress) return null;
 
+        return NextResponse.json(updatedAddress);
+    } catch (error: any) {
+        return NextResponse.json(`Internal Error at [EditAddress]`, error);
     }
 };

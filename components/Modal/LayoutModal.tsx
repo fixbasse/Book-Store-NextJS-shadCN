@@ -1,13 +1,11 @@
 'use client'
 
-import React, { useCallback } from "react";
-
+import React, { useState, useCallback } from "react";
 import {
     Dialog,
     DialogContent,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { useState } from "react";
 import { RegisterModal } from "./RegisterModal";
 import { SignInModal } from './SignInModal';
 

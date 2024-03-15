@@ -36,6 +36,7 @@ export function EditAddressModal({
     const form = useForm<z.infer<typeof addressSchema>>({
         resolver: zodResolver(addressSchema),
         defaultValues: {
+            id: address.id,
             firstname: "",
             lastname: "",
             mobile: "",
@@ -51,11 +52,11 @@ export function EditAddressModal({
         setIsLoading(true);
 
         try {
-            const res = await axios.post('/api/address/edit', values);
+            const res = await axios.put('/api/address', values);
             console.log(res.data);
 
             form.reset();
-            redirect('/account/address');
+            window.location.replace('/account/address');
         } catch (error) {
             console.log(error);
 

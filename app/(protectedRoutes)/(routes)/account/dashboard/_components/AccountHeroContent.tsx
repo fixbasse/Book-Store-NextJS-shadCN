@@ -4,7 +4,6 @@ import Typography from '@/components/text/Typography'
 import React from 'react'
 import { User } from '@prisma/client'
 import Link from 'next/link';
-import { useSelectAddressStore } from '@/hooks/use-address-id'
 interface AccountHeroContentProps {
     user: User | undefined | null;
 };
@@ -12,10 +11,8 @@ interface AccountHeroContentProps {
 const AccountHeroContent = ({
     user,
 }: AccountHeroContentProps) => {
-    const { addressId } = useSelectAddressStore();
 
-    console.log(addressId);
-
+    
 
     return (
         <>
@@ -26,9 +23,9 @@ const AccountHeroContent = ({
                 </Typography>
 
                 {/* Content */}
-                <div className='flex flex-col lg:flex-row justify-between gap-8'>
-
-                    <div className='border p-4 rounded-md w-full'>
+                <main className='flex flex-col lg:flex-row justify-between gap-8'>
+                
+                    <section className='border p-4 rounded-md w-full'>
                         <div className='flex items-center justify-between pb-4'>
                             <Typography className='font-bold'>
                                 My Profile
@@ -46,10 +43,10 @@ const AccountHeroContent = ({
                                 {user?.email}
                             </span>
                         </article>
-                    </div>
+                    </section>
 
                     {/* Address */}
-                    <div className='border p-4 rounded-md w-full flex flex-col justify-between'>
+                    <section className='border p-4 rounded-md w-full flex flex-col justify-between'>
                         <div className='flex items-center justify-between pb-4'>
                             <Typography className='font-bold'>
                                 My Address
@@ -67,6 +64,8 @@ const AccountHeroContent = ({
 
                             <div className='py-2'>
                                 <span></span>
+                                
+
                                 {/* <div className='flex gap-1'>
                                     <span>{address?.firstname}</span>
                                     <span>{address?.lastname}</span>
@@ -85,8 +84,8 @@ const AccountHeroContent = ({
                         </article>
 
                         {/* <AccountAddressModal /> */}
-                    </div>
-                </div>
+                    </section>
+                </main>
             </section>
         </>
     )

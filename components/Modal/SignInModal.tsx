@@ -30,7 +30,7 @@ import { redirect } from "next/navigation";
 interface SignInModalProps {
     modalSwitch: boolean;
     handleClose: () => void;
-}
+};
 
 export function SignInModal({
     modalSwitch,
@@ -136,7 +136,8 @@ export function SignInModal({
                     disabled={isPending}
                     variant='outline'
                     onClick={() => handleSignIn('google')}
-                    className="flex items-center justify-center gap-4 w-full">
+                    className="flex items-center justify-center gap-4 w-full"
+                >
                     <GrGoogle />
                     SignIn with Google
                 </Button>
@@ -144,7 +145,8 @@ export function SignInModal({
                     disabled={isPending}
                     variant='outline'
                     onClick={() => handleSignIn('github')}
-                    className="flex items-center justify-center gap-4 w-full">
+                    className="flex items-center justify-center gap-4 w-full"
+                >
                     <FaGithub />
                     SignIn with Github
                 </Button>

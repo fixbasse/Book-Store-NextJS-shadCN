@@ -8,16 +8,31 @@ import { addressHeader } from "@/data";
 import Typography from "@/components/text/Typography";
 import { CreateNewAddressModal } from "./CreateNewAddressModal";
 import { Button } from "@/components/ui/button";
+import { SubmitHandler, useForm } from "react-hook-form";
+import useAddressStore from "@/hooks/stores/use-address-id";
 
 
 interface AddressContentProps {
-    address: Address[];
+    address: Address[] | null | void;
 };
+
+export type Inputs = {
+    address: Address[];
+}
 
 const AddressContent = ({
     address
 }: AddressContentProps) => {
     const [edit, setEdit] = useState(false);
+    const { register, handleSubmit } = useForm<Inputs>();
+
+
+
+    const onSubmit: SubmitHandler<Inputs> = (values) => {
+        //  console.log(values);
+        // selectedAddress(values)
+       // localStorage.setItem('address', JSON.stringify(values.address));
+    };
 
     return (
         <div>
@@ -33,34 +48,35 @@ const AddressContent = ({
                 </button>
             </section>
 
-            <form>
-                {/* HEADER */}
-                <div className='rounded-lg my-4'>
-                    <section className='grid grid-cols-5 bg-primary-foreground dark:bg-muted p-4 rounded-t-md'>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                {/* TH */}
+                <section className='rounded-lg my-4'>
+                    <div className='grid grid-cols-5 bg-primary-foreground dark:bg-muted p-4 rounded-t-md'>
                         {addressHeader.map((item) => (
                             <Typography key={item.id} className='font-bold'>
                                 {item.label}
                             </Typography>
                         ))}
-                    </section>
+                    </div>
 
-
-
-                    {address.map((item) => (
+                    {address?.map((item) => (
                         <SingleAddress
                             key={item.id}
                             address={item}
+                            edit={edit}
+                            register={register}
                         />
                     ))}
+                </section>
 
-                </div>
 
-
-                {/* Add Address BTN */}
+                {/* BTN */}
                 <section className="flex items-center justify-end gap-2">
                     <CreateNewAddressModal />
 
-                    <Button className={edit ? 'block' : 'hidden'}>
+                    <Button
+                        type="submit"
+                        className={edit ? 'block' : 'hidden'}>
                         Save
                     </Button>
                 </section>

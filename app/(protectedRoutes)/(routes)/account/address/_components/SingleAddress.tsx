@@ -1,29 +1,29 @@
 'use client'
 
-import { Button } from '@/components/ui/button';
-import { useSelectAddressStore } from '@/hooks/use-address-id';
-import { Address } from '@prisma/client'
-import Link from 'next/link';
 import React from 'react'
-import { Form, SubmitHandler, useForm } from 'react-hook-form';
+import Link from 'next/link';
+import { Address } from '@prisma/client'
+
+import { Button } from '@/components/ui/button';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+
+import { Form, SubmitHandler, UseFormRegister, useForm } from 'react-hook-form';
+import { Inputs } from './AddressContent';
 
 
 interface SingleAddressProps {
     address: Address;
+    edit: boolean;
+    register: UseFormRegister<Inputs>;
 };
 
-// export type Inputs = {
-//     addressId: string | Address;
-// };
+
 
 const SingleAddress = ({
-    address
+    address,
+    edit,
+    register
 }: SingleAddressProps) => {
-    const { addressId, setAddressId } = useSelectAddressStore();
-
-
-    console.log(addressId);
-
 
     return (
         <div>
@@ -56,7 +56,12 @@ const SingleAddress = ({
                             Edit
                         </Link>
                     </Button>
-
+                    <RadioGroup className={edit ? 'block' : 'hidden'}>
+                        <RadioGroupItem
+                            value={address.address}
+                            {...register('address')}
+                        />
+                    </RadioGroup>
                 </div>
             </section>
 

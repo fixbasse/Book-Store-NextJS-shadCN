@@ -20,9 +20,9 @@ export async function POST(req: Request) {
                 district,
                 postcode
             }
-        })
+        });
 
-        return NextResponse.json(addAddress)
+        return NextResponse.json(addAddress);
     } catch (error) {
         return NextResponse.json('Internal Error')
     }
