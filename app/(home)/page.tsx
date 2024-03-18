@@ -9,7 +9,7 @@ export default function Home() {
     <main className="lg:px-16">
       <Hero />
       
-      <Typography className="mb-20 mt-24 text-center font-bold text-primary text-4xl">
+      <Typography className="mb-[8rem] text-center font-bold text-primary text-4xl">
         New Book
       </Typography>
 

@@ -37,7 +37,7 @@ export function DropDownCart() {
                 </div>
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent className="overflow-scroll p-4 font-medium flex flex-col gap-4">
+            <DropdownMenuContent className="overflow-scroll w-[300px] p-4 font-medium flex flex-col gap-4">
                 {cart.length ? (
                     cart.map((item) => (
                         <div key={item.id}>
