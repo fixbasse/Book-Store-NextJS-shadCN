@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FaCircleUser } from "react-icons/fa6";
 import { userMenuData } from "@/data";
 import { User } from "@prisma/client";
+import { headers } from "next/headers";
 
 interface AccountHeroSidebarProps {
     user: User | undefined | null;
@@ -15,6 +16,10 @@ const AccoutHeroSidebar = ({
     user
 }: AccountHeroSidebarProps) => {
     console.log(user?.email);
+
+    const head = headers();
+    const pathname = head.get('next-url');
+    console.log(pathname);
 
     return (
         <>

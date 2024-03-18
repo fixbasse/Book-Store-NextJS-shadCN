@@ -5,7 +5,6 @@ import getCurrentUser from "./getCurrentUser";
 export async function getAllAddress() {
     try {
         const user = await getCurrentUser();
-
         if (!user) return console.log('No user!');
 
         const address = await prismaDb.address.findMany({

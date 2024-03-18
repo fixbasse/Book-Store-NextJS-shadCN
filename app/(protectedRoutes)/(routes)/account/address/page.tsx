@@ -14,7 +14,6 @@ const AddressPage = async () => {
       </title>
 
       <AddressContent address={address} />
-      
     </div>
   )
 }

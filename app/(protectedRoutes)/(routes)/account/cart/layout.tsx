@@ -1,7 +1,7 @@
 import getCurrentUser from "@/hooks/getCurrentUser";
-import AccoutHeroSidebar from "../_components/AccoutHeroSidebar";
+import AccoutCartSidebar from "./_components/AccountCartSidebar";
 
-export default async function AddressLayout({
+export default async function CartLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
@@ -10,17 +10,15 @@ export default async function AddressLayout({
 
     return (
         <>
-
             <div className="flex flex-col lg:flex-row gap-4">
-                <aside className='bg-background py-4 lg:w-[30%] rounded-md' >
-                    <AccoutHeroSidebar
-                        user={user}
-                    />
-                </aside>
-
                 <section className='bg-background py-4 px-4 lg:w-[70%] rounded-md'>
                     {children}
                 </section>
+
+                <aside className='bg-background p-4 lg:w-[30%] rounded-md' >
+                    <AccoutCartSidebar
+                    />
+                </aside>
             </div>
 
         </>

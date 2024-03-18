@@ -12,6 +12,7 @@ import { Search } from 'lucide-react'
 import { useCurrentUser } from '@/hooks/use-current-user';
 import { TriggerSignInModal } from '@/components/Modal/TriggerSignInModal'
 import { TriggerSignInModalCart } from '@/components/Modal/TriggerSignInModal-Cart'
+import { DropDownCart } from './Cart/DropDownCart';
 
 const BottomNavbar = () => {
     const user = useCurrentUser();
@@ -54,15 +55,7 @@ const BottomNavbar = () => {
 
                 <div className="flex items-center gap-2 cursor-pointer">
                     {user ? (
-                        <>
-                            <FaShoppingCart size={25} className='text-muted-foreground' />
-                            <div className='font-bold'>
-                                $
-                                <span>
-                                    0.00
-                                </span>
-                            </div>
-                        </>
+                        <DropDownCart />
                     ) : (
                         <TriggerSignInModalCart />
                     )}

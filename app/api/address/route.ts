@@ -32,6 +32,7 @@ export async function POST(req: Request) {
             }
         });
 
+        //! don't use this or it will return error when deploy! 
         // if (!newAddress) return null;
 
         return NextResponse.json(newAddress);

@@ -44,7 +44,7 @@ export function EditAddressModal({
             district: "",
             postcode: "",
         },
-    })
+    });
 
     // 2. Define a submit handler.
     async function onSubmit(values: z.infer<typeof addressSchema>) {
@@ -55,7 +55,6 @@ export function EditAddressModal({
             const res = await axios.put('/api/address', values);
             console.log(res.data);
 
-            form.reset();
             window.location.replace('/account/address');
         } catch (error) {
             console.log(error);
