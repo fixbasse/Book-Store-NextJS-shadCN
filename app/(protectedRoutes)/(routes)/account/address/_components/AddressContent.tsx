@@ -1,16 +1,14 @@
 'use client'
 
 import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 import { Address } from "@prisma/client"
 import SingleAddress from "./SingleAddress";
 import { addressHeader } from "@/data";
-import Typography from "@/components/text/Typography";
 import { CreateNewAddressModal } from "./CreateNewAddressModal";
+import Typography from "@/components/text/Typography";
 import { Button } from "@/components/ui/button";
-import { SubmitHandler, useForm } from "react-hook-form";
-import useAddressStore from "@/hooks/stores/use-address-id";
-
 
 interface AddressContentProps {
     address: Address[] | null | void;
