@@ -54,7 +54,10 @@ const BottomNavbar = () => {
 
                 <div className="flex items-center gap-2 cursor-pointer">
                     {user ? (
-                        <DropDownCart />
+                        <div className='hidden lg:block'>
+                            <DropDownCart />
+                        </div>
+
                     ) : (
                         <TriggerSignInModalCart />
                     )}

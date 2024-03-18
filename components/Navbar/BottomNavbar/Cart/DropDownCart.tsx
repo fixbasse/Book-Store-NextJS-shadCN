@@ -19,9 +19,7 @@ export function DropDownCart() {
     const { cart, remove } = useCartStore((state) => ({
         cart: state.cart,
         remove: state.remove,
-    }))
-
-    const { count } = useCartStore()
+    }));
 
     return (
         <DropdownMenu>
@@ -39,20 +37,21 @@ export function DropDownCart() {
                 </div>
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent className="overflow-scroll w-full md:w-[300px] max-md:h-screen md:max-h-[300px] p-4 md:absolute md:top-4 md:right-[-3rem] font-medium flex flex-col gap-4">
+            <DropdownMenuContent className="overflow-scroll p-4 font-medium flex flex-col gap-4">
                 {cart.length ? (
                     cart.map((item) => (
-                        <div key={item.id} className="w-full">
-                            <div className="flex gap-2 w-full">
-                                <Image
-                                    src={item.img}
-                                    alt="book"
-                                    height={100}
-                                    width={100}
-                                />
+                        <div key={item.id}>
+                            <div className="flex gap-2">
+                                <div className="relative w-[100px] h-[100px]">
+                                    <Image
+                                        src={item.img}
+                                        alt="book"
+                                        fill
+                                    />
+                                </div>
 
                                 {/* PRICE & Delete */}
-                                <div className="flex flex-col justify-between w-full">
+                                <div className="flex flex-col justify-between">
                                     <Typography className="flex flex-col gap-2">
                                         <h3 className="font-bold">
                                             {item.label}

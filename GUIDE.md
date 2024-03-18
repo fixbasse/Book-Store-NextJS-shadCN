@@ -6,8 +6,9 @@ Book-Store
 5. Language Switcher
 
 ** NOW
--Updated Address
--Choose specific address
+-Updated Address //
+-Choose specific address // 
+-add to cart
 
 UI
 -loading screen
@@ -27,7 +28,7 @@ UI
 -Create account and login //
 -Edit & Delete the profile data
 -Send message 
--Select product and buying, editing or deleting
+-Select product and buying, editing or deleting //
 
 
 <!-- shadCN -->

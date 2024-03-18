@@ -10,7 +10,7 @@ const UserMenu = () => {
         <ThemeToggle />
       </div>
 
-      <div className='md:hidden'>
+      <div className='lg:hidden'>
         <DropDownCart />
       </div>
 
