@@ -1,5 +1,9 @@
 'use client'
 
+import React from "react";
+import { useCartStore } from "@/hooks/store/use-cart-store";
+import Link from "next/link";
+import Image from "next/image";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -8,12 +12,8 @@ import {
 
 import { FaShoppingCart } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
-import React from "react";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Typography from "@/components/text/Typography";
-import Link from "next/link";
-import { useCartStore } from "@/hooks/store/use-cart-store";
 
 export function DropDownCart() {
     const { cart, remove } = useCartStore((state) => ({
@@ -88,7 +88,8 @@ export function DropDownCart() {
                         </Typography>
 
                         <Link href='/account/cart'>
-                            <Button className="w-full font-bold">
+                            <Button
+                                className="w-full font-bold">
                                 Cart (0)
                             </Button>
                         </Link>
