@@ -1,4 +1,5 @@
-import React from 'react'
+import { AccountCartSelect } from "./_components/AccountCartSelect"
+
 
 const CartPage = () => {
   return (
@@ -7,7 +8,7 @@ const CartPage = () => {
         User | Cart
       </title>
 
-      CartPage
+      <AccountCartSelect />
     </>
   )
 }
