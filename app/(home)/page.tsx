@@ -1,4 +1,3 @@
-
 import { cartData } from "@/data";
 import Hero from "./_components/Hero/Hero";
 import SingleBookCard from "./_components/SingleBookCard";

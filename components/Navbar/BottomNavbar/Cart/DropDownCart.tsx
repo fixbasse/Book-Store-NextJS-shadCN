@@ -14,6 +14,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { IoTrashBin } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
 import Typography from "@/components/text/Typography";
+import { GrDocument } from "react-icons/gr";
 
 export function DropDownCart() {
     const { cart, remove } = useCartStore((state) => ({
@@ -74,8 +75,9 @@ export function DropDownCart() {
                     ))
                 ) : (
                     <div>
-                        <h2 className="text-center font-bold p-4 text-xl text-primary">
-                            &quot;Your cart is empty.&quot;
+                        <h2 className="p-4 text-center">
+                            <GrDocument size={30} className="mx-auto" />
+                            Your cart is empty.
                         </h2>
                     </div>
                 )}

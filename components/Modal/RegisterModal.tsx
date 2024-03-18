@@ -82,11 +82,11 @@ export function RegisterModal({
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Name</FormLabel>
+                                <FormLabel className="font-semibold">Name</FormLabel>
                                 <FormControl>
                                     <Input
                                         disabled={isPending}
-                                        placeholder="Thomas...." {...field} className=" placeholder:font-bold italic" />
+                                        placeholder="Thomas...." {...field} className=" placeholder:font-medium" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -98,11 +98,11 @@ export function RegisterModal({
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
+                                <FormLabel className="font-semibold">Email</FormLabel>
                                 <FormControl>
                                     <Input
                                         disabled={isPending}
-                                        placeholder="fix@gmail.com...." {...field} className=" placeholder:font-bold italic" />
+                                        placeholder="fix@gmail.com...." {...field} className=" placeholder:font-medium" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -114,12 +114,12 @@ export function RegisterModal({
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel className="font-semibold">Password</FormLabel>
                                 <FormControl>
                                     <Input
                                         type="password"
                                         disabled={isPending}
-                                        placeholder="****" {...field} className=" placeholder:font-bold italic" />
+                                        placeholder="****" {...field} className=" placeholder:font-medium" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

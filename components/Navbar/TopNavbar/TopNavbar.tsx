@@ -3,8 +3,10 @@ import Logo from './Logo'
 import Navigation from './Navigation'
 import UserMenu from './UserMenu'
 import { Sidebar } from '../Sidebar'
+import getCurrentUser from '@/hooks/getCurrentUser'
 
 const TopNavbar = () => {
+
     return (
         <>
             {/* Small Screen Navbar */}

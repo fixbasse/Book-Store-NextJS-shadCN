@@ -91,13 +91,13 @@ export function SignInModal({
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
+                                <FormLabel className="font-semibold">Email</FormLabel>
                                 <FormControl>
                                     <Input
                                         disabled={isPending}
                                         placeholder="fix@gmail.com...."
                                         {...field}
-                                        className=" placeholder:font-bold italic"
+                                        className=" placeholder:font-medium"
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -110,12 +110,12 @@ export function SignInModal({
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel className="font-semibold">Password</FormLabel>
                                 <FormControl>
                                     <Input
                                         type="password"
                                         disabled={isPending}
-                                        placeholder="****" {...field} className=" placeholder:font-bold italic" />
+                                        placeholder="****" {...field} className=" placeholder:font-medium" />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

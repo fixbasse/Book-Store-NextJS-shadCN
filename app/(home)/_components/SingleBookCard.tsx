@@ -2,8 +2,10 @@
 
 import Typography from "@/components/text/Typography";
 import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 import { useCartStore } from "@/hooks/store/use-cart-store";
 import { cartDataType } from "@/types"
+import { useSession } from "next-auth/react";
 import Image from "next/image"
 
 interface SinglBookCardProps {
@@ -13,9 +15,8 @@ interface SinglBookCardProps {
 const SingleBookCard = ({
     item
 }: SinglBookCardProps) => {
+    const user = useSession();
     const { add, cart } = useCartStore();
-
-    console.log(cart);
 
 
     return (
@@ -35,7 +36,7 @@ const SingleBookCard = ({
                 <h2 className="font-bold text-xl max-sm:text-base leading-[1.5rem]">
                     {item.label}
                 </h2>
-                <h3 className="py-1">
+                <h3 className="pb-1">
                     Author: {item.author}
                 </h3>
                 <span className=" text-primary text-xl max-sm:text-base font-bold">
@@ -43,13 +44,26 @@ const SingleBookCard = ({
                 </span>
             </Typography>
 
-            <Button
-                onClick={() => add(item)}
-                className="w-full font-bold">
-                Add to cart
-            </Button>
+            {user ? (
+                <Button
+                    onClick={() => {
+                        add(item),
+                            toast({
+                                title: `Add to cart!`,
+                            })
+                    }}
+                    className="w-full font-bold">
+                    Add to cart
+                </Button>
+            ) : (
+                <Button
+                    className="w-full font-bold">
+                    Add to cart
+                </Button>
+            )}
 
-            
+
+
         </div>
     )
 }
