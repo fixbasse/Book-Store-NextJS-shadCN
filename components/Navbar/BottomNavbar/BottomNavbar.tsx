@@ -6,7 +6,6 @@ import { DropDownCategories } from './DropDownCategories'
 
 import { FaBell } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
-import { FaShoppingCart } from "react-icons/fa";
 import { Search } from 'lucide-react'
 
 import { useCurrentUser } from '@/hooks/use-current-user';

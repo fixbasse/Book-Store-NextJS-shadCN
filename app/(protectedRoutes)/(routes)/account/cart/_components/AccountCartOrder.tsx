@@ -2,6 +2,11 @@ import Typography from '@/components/text/Typography'
 import { Button } from '@/components/ui/button'
 import React from 'react'
 
+
+// interface AccountCartOrderProps {
+//     cartData:  cartDataType;
+// }
+
 const AccountCartOrder = () => {
     return (
         <>
