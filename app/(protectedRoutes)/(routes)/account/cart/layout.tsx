@@ -1,5 +1,6 @@
 import getCurrentUser from "@/hooks/getCurrentUser";
 import AccoutCartSidebar from "./_components/AccountCartSidebar";
+import AccountCartOrder from "./_components/AccountCartOrder";
 
 export default async function CartLayout({
     children,
@@ -15,12 +16,19 @@ export default async function CartLayout({
                     {children}
                 </section>
 
-                <aside className='bg-background p-4 lg:w-[30%] rounded-md' >
-                    <AccoutCartSidebar
-                    />
+            <div className="flex flex-col gap-4 lg:w-[30%] ">
+                <aside className='bg-background p-4 rounded-md' >
+                    <AccoutCartSidebar />
+
+                </aside>
+
+                <aside className="bg-background p-4 rounded-md">
+                    <AccountCartOrder />
+
                 </aside>
             </div>
 
+                    </div>
         </>
     );
 }
