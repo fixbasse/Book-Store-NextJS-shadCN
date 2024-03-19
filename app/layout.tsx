@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/Navbar/Navbar";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/toaster";
+import Hydration from "@/components/hydration";
 
 const inter = Nunito({ subsets: ["latin"] });
 
@@ -22,18 +23,22 @@ export default function RootLayout({
     <SessionProvider>
       <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar />
-            <div className="pt-[166px]">
-              {children}
-            </div>
-            <Toaster />
-          </ThemeProvider>
+          <Hydration>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="light"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Navbar />
+
+              <div className="pt-[166px]">
+                {children}
+              </div>
+
+              <Toaster />
+            </ThemeProvider>
+          </Hydration>
         </body>
       </html>
     </SessionProvider>

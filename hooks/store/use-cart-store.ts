@@ -18,6 +18,10 @@ export const useCartStore = create<CartStore>()(
     persist(
         (set, get) => ({
             cart: [],
+            totalPrice: () => {
+                const { cart } = get();
+                if (cart.length) return cart.map(item => item.price).reduce((prev, curr) => prev + curr);
+            },
             count: () => {
                 const { cart } = get();
                 if (cart.length) return cart.map(item => item.count).reduce((prev, curr) => prev + curr);
@@ -50,9 +54,9 @@ function updateCart(product: cartDataType, cart: CartItem[]): CartItem[] {
         return cart.map(item => {
             if (item.id === product.id)
                 return { ...item, count: item.count + 1 } as CartItem;
-            return item
+            return item;
         })
-    }
+    };
 
     return cart;
 };

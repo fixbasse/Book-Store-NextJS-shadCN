@@ -118,14 +118,14 @@ export const cartData: cartDataType[] = [
     {
         id: "1",
         label: "Harry Potter and The Order of Pheonix",
-        price: "20.00",
+        price: 20,
         img: 'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg',
         author: 'J.K. Rowling'
     },
     {
         id: "2",
         label: "Harry Potter and The Goblet of Fire",
-        price: "30.00",
+        price: 30,
         img: 'https://prodimage.images-bn.com/pimages/9780439139601_p0_v1_s1200x630.jpg',
         author: 'J.K. Rowling'
     },

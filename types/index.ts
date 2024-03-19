@@ -1,7 +1,7 @@
 export type cartDataType = {
     id: string;
     label: string;
-    price: string;
+    price: number;
     img: string;
     author: string;
 }

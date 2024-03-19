@@ -16,7 +16,8 @@ const SingleBookCard = ({
     item
 }: SinglBookCardProps) => {
     const user = useSession();
-    const { add, cart } = useCartStore();
+    const { add, cart, count } = useCartStore();
+    
 
 
     return (
@@ -39,7 +40,7 @@ const SingleBookCard = ({
                 <h3 className="pb-1">
                     Author: {item.author}
                 </h3>
-                <span className=" text-primary text-xl max-sm:text-base font-bold">
+                <span className="text-primary text-xl max-sm:text-base font-bold">
                     $ {item.price}
                 </span>
             </Typography>
