@@ -13,7 +13,7 @@ export const {
         callbacks: {
             async session({ token, session }) {
                 if (token.sub && session.user) {
-                    session.user.id = token.sub;
+                    session.user.id = token.sub; // sub == id
                 }
 
                 console.log(session);

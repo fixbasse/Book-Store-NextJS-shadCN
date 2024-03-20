@@ -37,13 +37,12 @@ export function DropDownCart() {
 
                     <div className='font-bold hover:text-primary'>
                         $
-                        {/* {cart.map((item) => (
-                            <span key={item.id}>
 
-                                {item.price * count()}
+                        <span>
+                            0.00
 
-                            </span>
-                        ))} */}
+                        </span>
+
                     </div>
                 </div>
             </DropdownMenuTrigger>

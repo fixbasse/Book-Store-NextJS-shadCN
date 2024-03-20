@@ -2,8 +2,6 @@ import NextAuth from "next-auth";
 import authConfig from "./auth.config";
 import { apiAuthPrefix, authRoute, publicRoutes } from "./route";
 
-
-
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
@@ -12,15 +10,15 @@ export default auth((req) => {
 
     const isApiRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
     const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
-    const isAuthRoute = authRoute.includes(nextUrl.pathname);
+    const isAuthRoute = authRoute.includes(nextUrl.pathname); // Modal
 
     if (isApiRoute) {
         return;
     };
 
-    // if (isLoggedIn && !isPublicRoute) {
-    //     return Response.redirect(new URL('/', nextUrl));
-    // };
+    if (!isPublicRoute && !isLoggedIn) {
+        return Response.redirect(new URL('/', nextUrl));
+    };
 
     return;
 });

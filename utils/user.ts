@@ -28,4 +28,4 @@ export const getUserById = async (id: string) => {
         console.log(error);
         return null;
     }
-}
+};

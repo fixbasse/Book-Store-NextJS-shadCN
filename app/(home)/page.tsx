@@ -1,7 +1,8 @@
 import { cartData } from "@/data";
-import Hero from "./_components/Hero/Hero";
+
 import SingleBookCard from "./_components/SingleBookCard";
 import Typography from "@/components/text/Typography";
+import Hero from "./_components/Hero";
 
 export default function Home() {
   return (

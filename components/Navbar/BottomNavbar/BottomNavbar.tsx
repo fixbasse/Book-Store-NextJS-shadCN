@@ -11,7 +11,7 @@ import { Search } from 'lucide-react'
 import { useCurrentUser } from '@/hooks/use-current-user';
 import { TriggerSignInModal } from '@/components/Modal/TriggerSignInModal'
 import { TriggerSignInModalCart } from '@/components/Modal/TriggerSignInModal-Cart'
-import { DropDownCart } from './Cart/DropDownCart';
+import { DropDownCart } from './DropDownCart';
 
 const BottomNavbar = () => {
     const user = useCurrentUser();

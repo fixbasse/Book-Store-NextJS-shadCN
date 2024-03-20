@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Inter, Nunito } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import Navbar from "@/components/Navbar/Navbar";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/toaster";
 import Hydration from "@/components/hydration";
+import Navbar from "@/components/Navbar";
 
 const inter = Nunito({ subsets: ["latin"] });
 

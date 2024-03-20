@@ -18,7 +18,7 @@ import { userMenuData } from "@/data";
 import { signOut } from "next-auth/react";
 
 import Link from "next/link";
-import { LayoutModal } from "@/components/Modal/LayoutModal";
+import { LayoutModal } from "@/components/Modal";
 
 export function DropdownNavbar() {
     const user = useCurrentUser();
@@ -32,7 +32,7 @@ export function DropdownNavbar() {
             {user && (
                 // User Icon & Name
                 <DropdownMenuTrigger asChild>
-                    <span className="flex items-center gap-4">
+                    <span className="flex items-center gap-4 max-w-[200px]">
                         <User />
                         <span className="font-bold hover:text-primary hidden lg:block">
                             {user?.name}
