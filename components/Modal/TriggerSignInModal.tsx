@@ -28,7 +28,7 @@ export function TriggerSignInModal() {
                 </button>
             </DialogTrigger>
 
-            <DialogContent>
+            <DialogContent className="lg:w-[800px]">
 
                 <SignInModal
                     modalSwitch={modalSwitch}

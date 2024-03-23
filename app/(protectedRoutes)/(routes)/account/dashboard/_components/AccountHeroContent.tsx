@@ -2,18 +2,13 @@
 
 import Typography from '@/components/text/Typography'
 import React from 'react'
-import { User } from '@prisma/client'
 import Link from 'next/link';
 import { useAddressStore } from '@/hooks/store/use-address-store';
-interface AccountHeroContentProps {
-    user: User | undefined | null;
-};
+import { useCurrentUser } from '@/hooks/use-current-user';
 
-const AccountHeroContent = ({
-    user,
-}: AccountHeroContentProps) => {
+const AccountHeroContent = () => {
     const { addressCart } = useAddressStore()
-
+    const user = useCurrentUser();
 
     return (
         <>
@@ -62,7 +57,7 @@ const AccountHeroContent = ({
                             <h3 className='font-bold'>
                                 Default Address
                             </h3>
-
+                            {/* Need to fix Come from localstoreage */}
                             <div className='py-2'>
                                 {addressCart.map((item) => (
                                     <div key={item.id} className='flex gap-1 flex-wrap'>

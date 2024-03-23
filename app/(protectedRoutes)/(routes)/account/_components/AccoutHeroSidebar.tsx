@@ -1,25 +1,20 @@
-// 'use client'
+'use client'
 
 import Typography from "@/components/text/Typography";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { FaCircleUser } from "react-icons/fa6";
 import { userMenuData } from "@/data";
-import { User } from "@prisma/client";
-import { headers } from "next/headers";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
-interface AccountHeroSidebarProps {
-    user: User | undefined | null;
-}
 
-const AccoutHeroSidebar = ({
-    user
-}: AccountHeroSidebarProps) => {
+const AccoutHeroSidebar = () => {
+    const user = useCurrentUser();
     console.log(user?.email);
 
-    const head = headers();
-    const pathname = head.get('next-url');
-    console.log(pathname);
+    // const head = headers();
+    // const pathname = head.get('next-url');
+    // console.log(pathname);
 
     return (
         <>
