@@ -3,7 +3,6 @@
 import React from 'react'
 import { DropdownNavbar } from '../BottomNavbar/DropDownNavbar'
 import { ThemeToggle } from '../../ThemeToggle'
-import getCurrentUser from '@/hooks/getCurrentUser'
 import { TriggerSignInModalCart } from '@/components/Modal/TriggerSignInModal-Cart'
 import { DropDownCart } from '../BottomNavbar/DropDownCart'
 import { useCurrentUser } from '@/hooks/use-current-user'

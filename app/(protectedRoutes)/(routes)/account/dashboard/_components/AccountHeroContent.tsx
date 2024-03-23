@@ -4,6 +4,7 @@ import Typography from '@/components/text/Typography'
 import React from 'react'
 import { User } from '@prisma/client'
 import Link from 'next/link';
+import { useAddressStore } from '@/hooks/store/use-address-store';
 interface AccountHeroContentProps {
     user: User | undefined | null;
 };
@@ -11,8 +12,8 @@ interface AccountHeroContentProps {
 const AccountHeroContent = ({
     user,
 }: AccountHeroContentProps) => {
+    const { addressCart } = useAddressStore()
 
-    
 
     return (
         <>
@@ -24,7 +25,7 @@ const AccountHeroContent = ({
 
                 {/* Content */}
                 <main className='flex flex-col lg:flex-row justify-between gap-8'>
-                
+
                     <section className='border p-4 rounded-md w-full'>
                         <div className='flex items-center justify-between pb-4'>
                             <Typography className='font-bold'>
@@ -63,23 +64,28 @@ const AccountHeroContent = ({
                             </h3>
 
                             <div className='py-2'>
-                                <span></span>
-                                
+                                {addressCart.map((item) => (
+                                    <div key={item.id} className='flex gap-1 flex-wrap'>
+                                        <div className='flex gap-1'>
+                                            <span>
+                                                {item.firstname}
+                                            </span>
+                                            {item.lastname}
+                                        </div>
+                                        <div className='flex flex-wrap gap-1'>
+                                            <span>
+                                                {item.address}
+                                            </span>
+                                            <span>
+                                                {item.district}
+                                            </span>
+                                            <span>
+                                                {item.postcode}
 
-                                {/* <div className='flex gap-1'>
-                                    <span>{address?.firstname}</span>
-                                    <span>{address?.lastname}</span>
-                                    <span>{address?.mobile}</span>
-                                </div>
-                                <div className='flex gap-1'>
-                                    {address?.address}
-                                    <span>
-                                        {address?.district}
-                                    </span>
-                                </div>
-                                <div>
-                                    {address?.postcode}
-                                </div> */}
+                                            </span>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </article>
 

@@ -131,8 +131,8 @@ export function EditAddressModal({
                         )}
                     />
 
-                    <section className="flex max-[425px]:flex-col min-[425px]:gap-4 w-full">
-                        {/* Districe */}
+                    <section className="flex max-[425px]:flex-col gap-4 w-full">
+                        {/* District */}
                         <FormField
                             control={form.control}
                             name="district"
@@ -151,7 +151,7 @@ export function EditAddressModal({
                                 </FormItem>
                             )}
                         />
-                        {/* Lastname */}
+                        {/* Postcode */}
                         <FormField
                             control={form.control}
                             name="postcode"

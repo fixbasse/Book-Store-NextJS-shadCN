@@ -1,9 +1,11 @@
 'use client'
 
+import { TriggerSignInModalAddToCart } from "@/components/Modal/TriggerSignInModal-Add";
 import Typography from "@/components/text/Typography";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { useCartStore } from "@/hooks/store/use-cart-store";
+import { useCurrentUser } from "@/hooks/use-current-user";
 import { cartDataType } from "@/types"
 import { useSession } from "next-auth/react";
 import Image from "next/image"
@@ -15,9 +17,9 @@ interface SinglBookCardProps {
 const SingleBookCard = ({
     item
 }: SinglBookCardProps) => {
-    const user = useSession();
+    const user = useCurrentUser();
     const { add, cart, count } = useCartStore();
-    
+
 
 
     return (
@@ -57,10 +59,7 @@ const SingleBookCard = ({
                     Add to cart
                 </Button>
             ) : (
-                <Button
-                    className="w-full font-bold">
-                    Add to cart
-                </Button>
+                <TriggerSignInModalAddToCart />
             )}
 
 

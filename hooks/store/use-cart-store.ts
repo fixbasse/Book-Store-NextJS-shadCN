@@ -10,7 +10,7 @@ type CartStore = {
     cart: CartItem[],
     count: () => number;
     add: (product: cartDataType) => void,
-    remove: (isProduct: string) => void,
+    remove: (idProduct: string) => void,
     removeAll: () => void;
 };
 
@@ -18,10 +18,10 @@ export const useCartStore = create<CartStore>()(
     persist(
         (set, get) => ({
             cart: [],
-            totalPrice: () => {
-                const { cart } = get();
-                if (cart.length) return cart.map(item => item.price).reduce((prev, curr) => prev + curr);
-            },
+            // totalPrice: () => {
+            //     const { cart } = get();
+            //     if (cart.length) return cart.map(item => item.price).reduce((prev, curr) => prev + curr);
+            // },
             count: () => {
                 const { cart } = get();
                 if (cart.length) return cart.map(item => item.count).reduce((prev, curr) => prev + curr);

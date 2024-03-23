@@ -30,7 +30,11 @@ export function DropDownCart() {
             <DropdownMenuTrigger asChild>
                 <div className="flex items-center gap-2 relative">
                     {/* Count */}
-                    <span className="absolute top-[-6px] left-3 bg-primary rounded-full w-5 h-5 text-sm flex items-center justify-center text-background">
+        
+                    <span className={`absolute top-[-6px] left-3 bg-primary rounded-full w-5 h-5 text-sm flex items-center justify-center text-background
+                    ${count() === 0 && 'hidden'}
+                    `}
+                    >
                         {count()}
                     </span>
                     <FaShoppingCart size={25} className='text-muted-foreground' />
@@ -47,7 +51,7 @@ export function DropDownCart() {
                 </div>
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent className="overflow-scroll w-[320px] p-2 font-medium flex flex-col gap-4">
+            <DropdownMenuContent className="overflow-auto w-[320px] p-2 font-medium flex flex-col gap-4">
                 {cart.length ? (
                     cart.map((item) => (
                         <div key={item.id}>

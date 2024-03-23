@@ -9,6 +9,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 import { Form, SubmitHandler, UseFormRegister, useForm } from 'react-hook-form';
 import { Inputs } from './AddressContent';
+import { useAddressStore } from '@/hooks/store/use-address-store';
 
 
 interface SingleAddressProps {
@@ -17,13 +18,12 @@ interface SingleAddressProps {
     register: UseFormRegister<Inputs>;
 };
 
-
-
 const SingleAddress = ({
     address,
     edit,
     register
 }: SingleAddressProps) => {
+    const { add: addAddress } = useAddressStore();
 
     return (
         <div>
@@ -47,6 +47,7 @@ const SingleAddress = ({
                     {address?.mobile}
                 </h2>
 
+
                 <div className='flex items-center gap-12'>
                     <Button variant='secondary' className='w-[50px] p-2'>
                         <Link
@@ -56,12 +57,13 @@ const SingleAddress = ({
                             Edit
                         </Link>
                     </Button>
-                    <RadioGroup className={edit ? 'block' : 'hidden'}>
-                        <RadioGroupItem
-                            value={address.address}
-                            {...register('address')}
+                    <div className={edit ? 'block' : 'hidden'}>
+                        <input
+                            type='radio'
+                            onClick={() => addAddress(address)}
                         />
-                    </RadioGroup>
+                    </div>
+
                 </div>
             </section>
 

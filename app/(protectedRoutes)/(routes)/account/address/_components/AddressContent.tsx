@@ -9,8 +9,9 @@ import { addressHeader } from "@/data";
 import { CreateNewAddressModal } from "./CreateNewAddressModal";
 import Typography from "@/components/text/Typography";
 import { Button } from "@/components/ui/button";
+import { useAddressStore } from "@/hooks/store/use-address-store";
 
-interface AddressContentProps {
+export interface AddressContentProps {
     address: Address[] | null | void;
 };
 
@@ -23,13 +24,14 @@ const AddressContent = ({
 }: AddressContentProps) => {
     const [edit, setEdit] = useState(false);
     const { register, handleSubmit } = useForm<Inputs>();
+    const { add: addAddress } = useAddressStore();
 
 
 
     const onSubmit: SubmitHandler<Inputs> = (values) => {
         //  console.log(values);
         // selectedAddress(values)
-       // localStorage.setItem('address', JSON.stringify(values.address));
+        // localStorage.setItem('address', JSON.stringify(values.address));
     };
 
     return (
@@ -73,6 +75,7 @@ const AddressContent = ({
                     <CreateNewAddressModal />
 
                     <Button
+
                         type="submit"
                         className={edit ? 'block' : 'hidden'}>
                         Save
